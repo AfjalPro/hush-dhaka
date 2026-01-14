@@ -52,17 +52,23 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   // 1) Filter raw data by search
+  const normalize = (s = "") =>
+    s
+      .toLowerCase()
+      .normalize("NFKD")                 // helps with accented chars
+      .replace(/[\u0300-\u036f]/g, "")   // remove diacritics
+      .replace(/[^a-z0-9]+/g, "");       // keep only letters+numbers
+  
   const filteredPerfumes = useMemo(() => {
-    if (!searchTerm) return perfumeData;
-
-    const lowerTerm = searchTerm.toLowerCase();
-    return perfumeData.filter(
-      (item) =>
-        item.name.toLowerCase().includes(lowerTerm) ||
-        item.brand.toLowerCase().includes(lowerTerm)
-    );
+    const q = normalize(searchTerm);
+    if (!q) return perfumeData;
+  
+    return perfumeData.filter((item) => {
+      const name = normalize(item.name);
+      const brand = normalize(item.brand);
+      return name.includes(q) || brand.includes(q);
+    });
   }, [searchTerm]);
-
   // 2) Group filtered data for brands accordion
   const brandsData = useMemo(() => {
     const grouped = {};

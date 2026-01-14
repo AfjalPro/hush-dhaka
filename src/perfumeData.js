@@ -559,7 +559,7 @@ export const perfumeData = [
   { id: 558, name: "THE TRAGEDY OF LORD GEORGE", brand: "PENHALIGON" },
   { id: 559, name: "TIGER OUD", brand: "ROBERTO CAVALLI" },
   { id: 560, name: "TOBACCO OUD", brand: "TOM FORD" },
-  { id: 561, name: "TOBACCO VANILLA", brand: "TOM FORD" },
+  { id: 561, name: "TOBACCO VANILLE", brand: "TOM FORD" },
   { id: 562, name: "TOMMY BOY", brand: "TOMMY HILFIGER" },
   { id: 563, name: "TOMMY GIRL", brand: "TOMMY HILFIGER" },
   { id: 564, name: "TOMMY MAN", brand: "TOMMY HILFIGER" },
